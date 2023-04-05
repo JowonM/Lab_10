@@ -1,12 +1,16 @@
 import java.util.Scanner;
 public class TicTacToe {
+    //Static ints to use in methods//
     private static final int ROW = 3;
     private static final int COL = 3;
+    //Static String array that acts as the board//
     private static String board[][] = new String[COL][ROW];
+    //void = no return in method//
     private static void turn(Scanner in, String player)
     {
         int rRow = 0;
         int cCol = 0;
+        //boolean to control the do-while loop//
         boolean validMove = true;
         do
         {
@@ -30,7 +34,7 @@ public class TicTacToe {
             }
         }    while (validMove);
     }
-
+            //method to clear(add spaces to) the board //
     private static void clearBoard() {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COL; j++) {
@@ -38,16 +42,17 @@ public class TicTacToe {
             }
         }
     }
-
+            //method to display the current board//
     private static void display() {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COL; j++) {
                 System.out.print("[" + board[i][j] + "]");
             }
+            //to make sure the next thing printed is on a newline//
             System.out.println();
         }
     }
-
+            //method to check if a there was a valid input(1-3)//
     private static boolean isValidMove(int row, int col) {
         if (board[col][row].equals(" ")) {
             return true;
@@ -55,7 +60,7 @@ public class TicTacToe {
             return false;
         }
     }
-
+        //method to check is someone one b
     private static boolean isWin(String player)
     {
         if (isColWin(player) || isRowWin(player) || isDiagonalWin(player))

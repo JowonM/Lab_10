@@ -60,17 +60,7 @@ public class TicTacToe {
             return false;
         }
     }
-        //method to check is someone one b
-    private static boolean isWin(String player)
-    {
-        if (isColWin(player) || isRowWin(player) || isDiagonalWin(player))
-        {
-            return true;
-        }
-        return false;
-
-
-    }
+    //method to check each column input for a win//
 
     private static boolean isColWin(String player) {
 
@@ -98,6 +88,7 @@ public class TicTacToe {
         }
         return false;
     }
+    //method to check each row input for a win//
 
     private static boolean isRowWin(String player)
     {
@@ -121,6 +112,7 @@ public class TicTacToe {
         }
         return false;
     }
+            //method to check each diagonal input for a win//
 
     private static boolean isDiagonalWin(String player)
     {
@@ -169,6 +161,18 @@ public class TicTacToe {
         return false;
     }
 
+            //method to show someone won a column, row, or diagonal//
+    private static boolean isWin(String player)
+    {
+        if (isColWin(player) || isRowWin(player) || isDiagonalWin(player))
+        {
+            return true;
+        }
+        return false;
+
+
+    }
+                //method to show if there has been a tie//
     private static boolean isTie ()
     {
         boolean fullBoard = true;
@@ -187,15 +191,19 @@ public class TicTacToe {
         }
         return false;
     }
+                //tester method//
     public static void main(String[] args) {
+        //creating a scanner object to take inputs//
         Scanner in = new Scanner(System.in);
         boolean gameOver = false;
+        //clearing the board//
         clearBoard();
         do {
-
+                //inner workings of the game//
             do
             {
                 gameOver = false;
+                //telling player X to go//
                 turn(in, "X");
                 if (isWin("X")) {
                     System.out.println("Xs Win!");
@@ -208,15 +216,18 @@ public class TicTacToe {
                 }
                 if (!gameOver)
                 {
+                    //telling player O to go//
                     turn(in, "O");
                     if (isWin("O")) {
                         System.out.println("Os Win!");
                         gameOver = true;
                     }
                 }
-
+                //making sure the game plays while gameOver is not true//
             }while(!gameOver);
+                //clearing the board before playing again or ending the program//
             clearBoard();
+            //prompt to play again//
         } while (SafeInput.getYNConfirm(in, "Would you like to play again"));
     }
 
